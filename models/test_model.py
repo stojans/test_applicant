@@ -13,3 +13,7 @@ class TestModel(models.Model):
         ('confirmed','Confirmed'),
         ('done','Done'),
     ], string='State', default='draft')
+
+    def action_confirm(self):
+        for record in self:
+            record.state = 'confirmed'

@@ -26,9 +26,9 @@
                         <field name="state"/>
                         <field name="reference_code"/>
                     </group>
-                    <footer>
+                    <!-- <footer>
                         <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
-                    </footer>
+                    </footer> -->
                 </sheet>
             </form>
         </field>
@@ -37,7 +37,7 @@
     <record id="action_test_model" model="ir.actions.act_window">
         <field name="name">Test Models</field>
         <field name="res_model">test.model</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p>Create and manage your test models here.</p>
         </field>
