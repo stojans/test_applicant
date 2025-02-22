@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_test_model_tree" model="ir.ui.view">
+        <field name="name">test.model.tree</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <list string="Test Model">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="state"/>
+                <field name="reference_code"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_test_model_form" model="ir.ui.view">
+        <field name="name">test.model.form</field>
+        <field name="model">test.model</field>
+        <field name="arch" type="xml">
+            <form string="Test Model">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="state"/>
+                        <field name="reference_code"/>
+                    </group>
+                    <footer>
+                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_test_model" model="ir.actions.act_window">
+        <field name="name">Test Models</field>
+        <field name="res_model">test.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Create and manage your test models here.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_test_model_root" name="Test Applicant" sequence="10" parent="base.menu_administration"/>
+    <menuitem id="menu_test_model" name="Test Model" parent="menu_test_model_root" action="action_test_model" sequence="10"/>
+</odoo>
