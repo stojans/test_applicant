@@ -9,6 +9,7 @@
                 <field name="name"/>
                 <field name="description"/>
                 <field name="state"/>
+                <field name="confirmation_datetime"/>
                 <field name="reference_code"/>
             </list>
         </field>
@@ -24,6 +25,7 @@
                         <field name="name"/>
                         <field name="description"/>
                         <field name="state"/>
+                        <field name="confirmation_datetime"/>
                         <field name="reference_code"/>
                     </group>
                     <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>

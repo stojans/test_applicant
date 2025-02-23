@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from odoo import models, fields, api
 
 class TestModel(models.Model):
@@ -13,10 +14,12 @@ class TestModel(models.Model):
         ('confirmed','Confirmed'),
         ('done','Done'),
     ], string='State', default='draft')
+    confirmation_datetime=fields.Datetime(string='Confirmation Datetime')
 
     def action_confirm(self):
         for record in self:
             record.state = 'confirmed'
+            record.confirmation_datetime = fields.Datetime.now()
 
 
     def _compute_reference_code(self):
@@ -47,3 +50,17 @@ class TestModel(models.Model):
             values['reference_code'] = self._generate_reference_code()
 
         return super(TestModel, self).create(values)
+    
+
+
+    @api.model
+    def update_state_to_done(self):
+        time_threshold = datetime.now() - timedelta(minutes=30)
+
+        confirmed_records = self.search([
+            ('state', '=', 'confirmed'),
+            ('confirmation_datetime', '>=', time_threshold)
+        ])
+
+        for record in confirmed_records:
+            record.state = 'done'
