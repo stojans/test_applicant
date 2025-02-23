@@ -49,6 +49,9 @@ class TestModel(models.Model):
         if 'reference_code' not in values:
             values['reference_code'] = self._generate_reference_code()
 
+        if values['state'] == 'confirmed':
+            values['confirmation_datetime'] = fields.Datetime.now()
+
         return super(TestModel, self).create(values)
     
 
