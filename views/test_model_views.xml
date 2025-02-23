@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
+
+
+    <record id="group_manager" model="res.groups">
+        <field name="name">Test Manager Group</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+
     <record id="view_test_model_tree" model="ir.ui.view">
         <field name="name">test.model.tree</field>
         <field name="model">test.model</field>
@@ -41,6 +49,7 @@
         <field name="help" type="html">
             <p>Create and manage your test models here.</p>
         </field>
+        <field name="groups_id" eval="[(4, ref('test_applicant.group_manager'))]"/>
     </record>
 
 
@@ -76,6 +85,6 @@
     </data>
 
 
-    <menuitem id="menu_test_model_root" name="Test Applicant" sequence="10" parent="base.menu_administration"/>
-    <menuitem id="menu_test_model" name="Test Model" parent="menu_test_model_root" action="action_test_model" sequence="10"/>
+    <menuitem id="menu_test_model_root" name="Test Applicant" sequence="10" parent="base.menu_administration" groups="test_applicant.group_manager"/>
+    <menuitem id="menu_test_model" name="Test Model" parent="menu_test_model_root" action="action_test_model" sequence="10" groups="test_applicant.group_manager"/>
 </odoo>
