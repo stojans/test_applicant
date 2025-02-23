@@ -26,9 +26,7 @@
                         <field name="state"/>
                         <field name="reference_code"/>
                     </group>
-                    <!-- <footer>
-                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
-                    </footer> -->
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
                 </sheet>
             </form>
         </field>

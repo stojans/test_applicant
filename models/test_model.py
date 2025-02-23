@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import re
 
 class TestModel(models.Model):
     _name='test.model'
@@ -17,3 +18,31 @@ class TestModel(models.Model):
     def action_confirm(self):
         for record in self:
             record.state = 'confirmed'
+
+
+    def _compute_reference_code(self):
+        for record in self:
+            if not record.reference_code:
+                record.reference_code = self._generate_reference_code()
+
+    def _generate_reference_code(self):
+        last_record = self.search([], order='reference_code desc', limit=1)
+        
+        if last_record and last_record.reference_code:
+            match = re.match(r"TEST-(\d+)", last_record.reference_code)
+            if match:
+                last_number = int(match.group(1))
+            else:
+                last_number = 0
+        else:
+            last_number = 0
+
+        new_number = last_number + 1
+        return f"TEST-{new_number:04d}"
+
+    @api.model
+    def create(self, values):
+        if 'reference_code' not in values:
+            values['reference_code'] = self._generate_reference_code()
+
+        return super(TestModel, self).create(values)
