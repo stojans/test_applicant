@@ -54,14 +54,13 @@
 
     <data noupdate="1">
         <record id="confirmed_state_update" model="ir.cron">
-            <field name="name">Test Model: 'Confirmed' state update every 30 minutes</field>
+            <field name="name">Test Model: 'Confirmed' state update for confirmed states older than 30 minutes - every 5 minutes</field>
             <field name="model_id" ref="model_test_model"/>
             <field name="state">code</field>
             <field name="code">model.update_state_to_done()</field>
             <field name="user_id" ref="base.user_root"/>
             <field name='interval_number'>5</field>
             <field name='interval_type'>minutes</field>
-            <field name="nextcall" eval="(DateTime.now())"/>
             <field name="active" eval="True"/>
             <field name="priority">1</field>
         </record>
@@ -70,14 +69,13 @@
     <data noupdate="1">
 
         <record id="reference_code_reset" model="ir.cron">
-            <field name="name">Test Model: 'reference_code' field reset every 1 day</field>
+            <field name="name">Test Model: 'reference_code' field reset - every 1 day</field>
             <field name="model_id" ref="model_test_model"/>
             <field name="state">code</field>
             <field name="code">model.reset_reference_codes()</field>
             <field name="user_id" ref="base.user_root"/>
             <field name='interval_number'>1</field>
             <field name='interval_type'>days</field>
-            <field name="nextcall" eval="(DateTime.now())"/>
             <field name="active" eval="True"/>
             <field name="priority">1</field>
         </record>

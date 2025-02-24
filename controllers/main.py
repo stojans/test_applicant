@@ -1,11 +1,15 @@
 from odoo import http
 from odoo.http import request, Response
 import json
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class TestModelController(http.Controller):
     @http.route('/api/test-model', auth='public', methods=['GET'], csrf=False)
     def get_test_model(self):
+        _logger.info("GET request received")
 
 
         records = request.env['test.model'].search([])

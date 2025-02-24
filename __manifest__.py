@@ -9,6 +9,7 @@
         'security/ir.model.access.csv',
         'views/test_model_views.xml',
     ],
+    'controllers': ['controllers/main.py'],
     'installable': True,
     'application': True,
 }
