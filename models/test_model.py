@@ -16,6 +16,13 @@ class TestModel(models.Model):
     ], string='State', default='draft')
     confirmation_datetime=fields.Datetime(string='Confirmation Datetime')
 
+    _sql_constraints = [
+
+            ('reference_code_unique', 'unique (reference_code)', "Tag already exists!"),
+
+        ]
+
+
     def action_confirm(self):
         for record in self:
             record.state = 'confirmed'
