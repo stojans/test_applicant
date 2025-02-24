@@ -69,7 +69,7 @@ class TestModel(models.Model):
 
         confirmed_records = self.search([
             ('state', '=', 'confirmed'),
-            ('confirmation_datetime', '>=', time_threshold)
+            ('confirmation_datetime', '<', time_threshold)
         ])
 
         for record in confirmed_records:
