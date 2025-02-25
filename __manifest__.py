@@ -2,6 +2,7 @@
     'name': 'Test Applicant Module',
     'version': '1.0',
     'category': 'Custom',
+    'license': 'LGPL-3',
     'description': 'Custom Test Applicant module for managing applicants.',
     'author': 'Stefan',
     'depends': ['base'],

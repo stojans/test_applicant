@@ -51,7 +51,7 @@
         </field>
     </record>
 
-
+    <!-- cron job for updating state -->
     <data noupdate="1">
         <record id="confirmed_state_update" model="ir.cron">
             <field name="name">Test Model: 'Confirmed' state update for confirmed states older than 30 minutes - every 5 minutes</field>
@@ -66,8 +66,8 @@
         </record>
     </data>
 
+    <!-- cron job for resetting reference codes -->
     <data noupdate="1">
-
         <record id="reference_code_reset" model="ir.cron">
             <field name="name">Test Model: 'reference_code' field reset - every 1 day</field>
             <field name="model_id" ref="model_test_model"/>
